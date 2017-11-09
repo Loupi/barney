@@ -22,7 +22,7 @@ developed specifically for the Coveo REST API.
 
 #### Service
 
-[SalesForCoveoSearchServicece](https://github.com/Loupi/barney/blob/master/src/app/services/coveo/search/service.ts) interacts with the Cove REST API. It can perform search and suggest queries.
+[SalesForCoveoSearchService](https://github.com/Loupi/barney/blob/master/src/app/services/coveo/search/service.ts) interacts with the Cove REST API. It can perform search and suggest queries.
 An api subfolder contains typescript classes mapped to the corresponding REST API query parameters and responses.
 
 #### Component
