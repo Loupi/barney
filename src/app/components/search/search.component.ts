@@ -1,6 +1,7 @@
 import { Component, OnInit,Input, trigger, state, style, transition, animate } from '@angular/core';
 import { CoveoSearchService, LoggerService } from '../../services/index';
 import { QueryParameters, QueryResult, Highlight, SuggestParameters, Completion } from '../../services/coveo/index';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 class QueryResultViewModel {
     result: QueryResult;
@@ -45,18 +46,30 @@ export class SearchComponent implements OnInit {
     private suggestions: string[];
     private loading: boolean;
 
-    constructor(private service: CoveoSearchService, private log: LoggerService) {}
+    constructor(private route:ActivatedRoute, private router: Router, private service: CoveoSearchService, private log: LoggerService) {}
 
     ngOnInit() {
-        this.newSearch();
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                if(this.route.snapshot.params['query'] != undefined)
+                    this.queryString = this.route.snapshot.params['query'];
+                else
+                    this.queryString = "";
+
+                if(this.route.snapshot.params['page'] != undefined)
+                    this.page = parseInt(this.route.snapshot.params['page']);
+
+                if(this.route.snapshot.params['hits'] != undefined)
+                    this.hitsPerPage = parseInt(this.route.snapshot.params['hits']);
+                
+                this.search();
+            }
+          });
+
+        this.search();
     }
 
     @Input() queryString: string;
-
-    newSearch(): void {
-        this.page = 1;
-        this.search();
-    }
 
     search(): void {
         this.loading = true;
@@ -99,12 +112,25 @@ export class SearchComponent implements OnInit {
     }
 
     pageChanged(newPage: number): void {
-        this.page = newPage;
-        this.search();
+        this.navigate(newPage);
+    }
+
+    newSearch(): void {
+        this.navigate(1);
     }
 
     searchChanged(query: string): void {
         this.suggest();
+    }
+
+    private navigate(page: number){
+        this.router.navigate(['/search', { 
+            page: page, 
+            query: this.queryString, 
+            hits: this.hitsPerPage }]);
+
+        this.page = page;
+        this.search();
     }
 
     private createQueryResultViewModel(result: QueryResult): QueryResultViewModel{

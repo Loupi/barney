@@ -9,7 +9,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
+    data: { 
+      page: 1, 
+      query: "", 
+      hitsPerPage: 10
+    }
   }
   // { path: '**', component: PageNotFoundComponent }
 ];
