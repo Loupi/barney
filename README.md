@@ -28,7 +28,7 @@ An api subfolder contains typescript classes mapped to the corresponding REST AP
 #### Component
 
 [SearchComponent](https://github.com/Loupi/barney/blob/master/src/app/components/search/search.component.ts) is injected with the search service, angular routing and logger.
-It listents for browser navigation events to update itself without reloading the page.
+It listens for browser navigation events to update itself without reloading the page.
 It displays a search input with suggestions support. A select controls the hits per page.
 
 It displays a list of results with pagination support. When changing pages, a loader is displayed
