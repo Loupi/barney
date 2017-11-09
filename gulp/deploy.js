@@ -37,7 +37,7 @@ module.exports = function(gulp, config) {
 	gulp.task('init-deploy', gulp.series(
 		'clean-tmp',
 		'clean-build',
-		gulp.parallel('html:prod', 'visualforce:prod', 'scripts:prod', 'styles:prod')
+		gulp.parallel('html:prod', 'visualforce:prod', 'scripts:prod', 'styles:prod', 'themes:prod')
 	));
 
 	gulp.task('tempgen:visualforce', () => {

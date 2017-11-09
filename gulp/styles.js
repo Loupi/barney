@@ -33,6 +33,13 @@ module.exports = function(gulp, config) {
 	gulp.task('styles:dev', gulp.parallel('sass:dev', 'css:dev'));
 	gulp.task('styles:prod', gulp.parallel('sass:prod', 'css:prod'));
 
+	gulp.task('themes:dev', function() {
+		return gulp.src(['src/styles/themes/**/*']).pipe(gulp.dest('build/styles/themes'));
+	});
+	gulp.task('themes:prod', function() {
+		return gulp.src(['src/styles/themes/**/*']).pipe(gulp.dest('build/styles/themes'));
+	});
+
 	gulp.task('watch:styles', () => {
 		gulp.watch('src/**/*.scss', gulp.series('sass:dev'));
 		gulp.watch('src/**/*.css', gulp.series('css:dev'));

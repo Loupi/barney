@@ -1,4 +1,4 @@
-global class AngularAppController {
+global class BarneyAppController {
   
   @RemoteAction
   WebService static Contact upsertContact(Contact contact) {
@@ -8,7 +8,7 @@ global class AngularAppController {
 
   @RemoteAction
   WebService static String getContactSalutationsPicklist() {
-    return AngularAppController.getValueToLabelMapOfPicklistJson(Schema.Contact.Salutation);
+    return BarneyAppController.getValueToLabelMapOfPicklistJson(Schema.Contact.Salutation);
   }
   
   @RemoteAction

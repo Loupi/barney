@@ -36,21 +36,22 @@
       '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
       '@angular/router/testing': 'npm:@angular/router/bundles/router-testing.umd.js',
       '@angular/forms/testing': 'npm:@angular/forms/bundles/forms-testing.umd.js',
-
+      
       // other libraries
       'rxjs': 'npm:rxjs',
-      'jsforce': 'npm:jsforce/build/jsforce.min.js',
-      'moment': 'npm:moment/min/moment.min.js',
-      'crypto-js': 'npm:crypto-js/crypto-js.js',
-      'lodash': 'npm:lodash/lodash.min.js'
+      'lodash': 'npm:lodash/lodash.min.js',
+      'ngx-pagination': 'https://npmcdn.com/ngx-pagination'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
         main: './app/main.js',
-        defaultExtension: 'js'
+        defaultExtension: 'js',
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      'ngx-pagination': {
         defaultExtension: 'js'
       }
     }

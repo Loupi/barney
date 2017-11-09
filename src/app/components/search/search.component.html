@@ -1,0 +1,60 @@
+<div style="width:100%;" class="ui action input">
+    <input type="text" placeholder="Search..." list="suggestions" (keyup.enter)="newSearch()" [(ngModel)]="queryString" (ngModelChange)="searchChanged($event)">
+    <datalist id="suggestions">
+        <option *ngFor="let suggestion of suggestions" [ngValue]="suggestion">
+    </datalist>
+    
+    <button class="ui icon button" (click)="newSearch()">
+      <i class="search icon"></i>
+    </button>
+
+    &nbsp;&nbsp;
+    <div class="inline field">
+        <div class="ui right pointing label">Hits Per Page</div>
+        <select [(ngModel)]="hitsPerPage" class="ui dropdown">
+                <option *ngFor="let hits of hitsPerPageOptions" [ngValue]="hits">{{hits}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="ui segment">
+
+    <div class="ui inverted dimmer" [ngClass]="{ 'active': loading == true }">
+        <div class="ui loader"></div>
+    </div>
+
+    <p ng-if="totalCount > hitsPerPage"></p>
+    
+    <div align="center">
+        <pagination-controls (pageChange)="pageChanged($event)" maxSize="12" autoHide="true"></pagination-controls>
+    </div>
+
+    <div class="ui five column grid">
+        <div class="column" *ngFor="let viewModel of results | paginate: { itemsPerPage: hitsPerPage, currentPage: page, totalItems: totalCount }">
+            <a target="blank" [attr.href]="viewModel.clickUrl">
+                <div style="max-height:260px;height:260px;color: black" class="ui fluid card" [@cardState]="viewModel.state" (mouseover)="viewModel.state = 'hovering'" (mouseleave)="viewModel.state = 'normal'">
+                    <div class="content">
+                        <h4 class="ui header" [innerHTML]="viewModel.highlightedTitle"></h4>
+                    </div>
+                    <div align="center" style="height:160px">
+                        <img style="vertical-align: center; max-height:100px;height:100px" class="ui tiny image center" [src]="viewModel.thumbnail">
+                    </div>
+                    <div style="margin-left:14px">{{viewModel.coutry}} {{viewModel.region}}</div>
+                    <div class="content">
+                        <span *ngFor="let r of viewModel.rating" class="right floated">
+                            <i class="star icon active"></i>
+                        </span>
+                        {{viewModel.price}}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div align="center">
+        <pagination-controls (pageChange)="pageChanged($event)" maxSize="12" autoHide="true"></pagination-controls>
+    </div>
+    
+</div>
+
+

@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+
+export class QueryParameters {
+	q: string;
+	aq: string;
+	cq: string;
+	dq: string;
+	partialMatch: boolean;
+	partialMatchKeywords: number;
+	partialMatchThreshold: number|string;
+	wildcards: boolean;
+	questionMark: boolean;
+	firstResult: number;
+	numberOfResults: number;
+	sortCriteria: string;
+	filterField: string;
+	filterFieldRange: number;
+	childField: string;
+	fieldsToInclude: string[];
+	fieldsToExclude: string[];
+	excerptLength: number;
+	enableDidYouMean: boolean;
+	timezone: string;
+	enableDuplicateFiltering: boolean;
+	retrieveFirstSentences: boolean;
+	scope: string;
+	queryFunctions: any;
+	rankingFunctions: any;
+	groupBy: any;
+	searchHub: string;
+	tab: string;
+	thesaurus: string;
+	debug: boolean;
+	pipeline: string;
+	superUserToken: string;
+	context: any;
+	format: string;
+	maximumAge: number;
+	enableQuerySyntax: boolean;
+	locale: string;
+}

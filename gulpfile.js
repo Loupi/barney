@@ -18,4 +18,4 @@ require('./gulp/html')(gulp, config, server);
 require('./gulp/deploy')(gulp, config);
 
 gulp.task('watch:all', gulp.parallel('watch:scripts', 'watch:styles', 'watch:html'))
-gulp.task('default', gulp.series('scripts:dev', 'styles:dev', 'html:dev', 'visualforce:dev', gulp.parallel('watch:all', 'serve')));
+gulp.task('default', gulp.series('scripts:dev', 'styles:dev', 'themes:dev', 'html:dev', 'visualforce:dev', gulp.parallel('watch:all', 'serve')));

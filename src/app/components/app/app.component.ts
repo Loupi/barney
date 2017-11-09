@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SalesforceService, LoggerService } from '../../services/index';
+import { LoggerService } from '../../services/index';
 
 @Component({
   moduleId: module.id,
@@ -8,7 +8,7 @@ import { SalesforceService, LoggerService } from '../../services/index';
 })
 export class AppComponent {
 
-  constructor(public sfdc: SalesforceService, public log: LoggerService) {
+  constructor(public log: LoggerService) {
       
   }
 
