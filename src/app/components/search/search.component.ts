@@ -19,6 +19,7 @@ class QueryResultViewModel {
     moduleId: module.id,
     selector: 'search',
     templateUrl: 'search.component.html',
+    styleUrls: ['search.component.css'],
     animations: [
         trigger('cardState', [
             state('hovering', style({

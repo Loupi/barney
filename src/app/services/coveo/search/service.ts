@@ -5,7 +5,7 @@ import { QueryParameters, QueryExecutionInformation, SuggestParameters, Completi
 
 @Injectable()
 export class CoveoSearchService {
-	private accessToken = "your api key here";
+	private accessToken = "your api key";
 	private apiUrl = "https://cloudplatform.coveo.com/rest/";
 	private headers = new Headers({ 'Content-Type': 'application/json' });
 
